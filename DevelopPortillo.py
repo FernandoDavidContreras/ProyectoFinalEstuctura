@@ -196,3 +196,4 @@ class BinaryTree:
         while current.left:
             current = current.left
         return current.data
+
