@@ -250,8 +250,8 @@ class DataStructureApp(QWidget):
         self.structure_label = QLabel("Estructura de datos:")
         self.structure_combo = QComboBox()
         self.structure_combo.addItems(["Pila", "Cola", "Lista simplemente enlazada", "Lista circular",
-                                        "Lista doblemente enlazada", "Lista circular doble", "Árbol binario",
-                                        "Árbol de búsqueda"])
+                                       "Lista doblemente enlazada", "Lista circular doble", "Árbol binario",
+                                       "Árbol de búsqueda"])
         self.data_type_label = QLabel("Tipo de dato:")
         self.data_type_combo = QComboBox()
         self.data_types = ["Números enteros", "Números flotantes", "Valores lógicos", "Cadenas de texto"]
@@ -358,7 +358,8 @@ class DataStructureApp(QWidget):
             self.data_structure.insert_end(data)
         elif structure == 'Árbol binario':
             if not self.data_structure:
-                data_text, ok = QInputDialog.getText(self, "Insertar dato", "Ingrese el número entero para la raíz del árbol:")
+                data_text, ok = QInputDialog.getText(self, "Insertar dato",
+                                                     "Ingrese el número entero para la raíz del árbol:")
                 if ok:
                     data = int(data_text)
                     self.data_structure = BinaryTree(data)
@@ -368,7 +369,8 @@ class DataStructureApp(QWidget):
                 self.data_structure.insert(data)
         elif structure == 'Árbol de búsqueda':
             if not self.data_structure:
-                data_text, ok = QInputDialog.getText(self, "Insertar dato", "Ingrese el número entero para la raíz del árbol:")
+                data_text, ok = QInputDialog.getText(self, "Insertar dato",
+                                                     "Ingrese el número entero para la raíz del árbol:")
                 if ok:
                     data = int(data_text)
                     self.data_structure = BinarySearchTree(data)
@@ -397,7 +399,8 @@ class DataStructureApp(QWidget):
             else:
                 return
         elif data_type == 'Valores lógicos':
-            data_text, ok = QInputDialog.getText(self, "Eliminar dato", "Ingrese el valor lógico (True o False) a eliminar:")
+            data_text, ok = QInputDialog.getText(self, "Eliminar dato",
+                                                 "Ingrese el valor lógico (True o False) a eliminar:")
             if ok:
                 data = True if data_text.lower() == 'true' else False
             else:
@@ -451,7 +454,8 @@ class DataStructureApp(QWidget):
             else:
                 return
         elif data_type == 'Valores lógicos':
-            data_text, ok = QInputDialog.getText(self, "Buscar dato", "Ingrese el valor lógico (True o False) a buscar:")
+            data_text, ok = QInputDialog.getText(self, "Buscar dato",
+                                                 "Ingrese el valor lógico (True o False) a buscar:")
             if ok:
                 data = True if data_text.lower() == 'true' else False
             else:
@@ -475,27 +479,33 @@ class DataStructureApp(QWidget):
             pass
         elif structure == 'Lista simplemente enlazada':
             if self.data_structure.search(data):
-                QMessageBox.information(self, "Búsqueda", f"El dato {data} ha sido encontrado en la estructura de datos.")
+                QMessageBox.information(self, "Búsqueda",
+                                        f"El dato {data} ha sido encontrado en la estructura de datos.")
                 return
         elif structure == 'Lista circular':
             if self.data_structure.search(data):
-                QMessageBox.information(self, "Búsqueda", f"El dato {data} ha sido encontrado en la estructura de datos.")
+                QMessageBox.information(self, "Búsqueda",
+                                        f"El dato {data} ha sido encontrado en la estructura de datos.")
                 return
         elif structure == 'Lista doblemente enlazada':
             if self.data_structure.search(data):
-                QMessageBox.information(self, "Búsqueda", f"El dato {data} ha sido encontrado en la estructura de datos.")
+                QMessageBox.information(self, "Búsqueda",
+                                        f"El dato {data} ha sido encontrado en la estructura de datos.")
                 return
         elif structure == 'Lista circular doble':
             if self.data_structure.search(data):
-                QMessageBox.information(self, "Búsqueda", f"El dato {data} ha sido encontrado en la estructura de datos.")
+                QMessageBox.information(self, "Búsqueda",
+                                        f"El dato {data} ha sido encontrado en la estructura de datos.")
                 return
         elif structure == 'Árbol binario':
             if self.data_structure.search(data):
-                QMessageBox.information(self, "Búsqueda", f"El dato {data} ha sido encontrado en la estructura de datos.")
+                QMessageBox.information(self, "Búsqueda",
+                                        f"El dato {data} ha sido encontrado en la estructura de datos.")
                 return
         elif structure == 'Árbol de búsqueda':
             if self.data_structure.search(data):
-                QMessageBox.information(self, "Búsqueda", f"El dato {data} ha sido encontrado en la estructura de datos.")
+                QMessageBox.information(self, "Búsqueda",
+                                        f"El dato {data} ha sido encontrado en la estructura de datos.")
                 return
 
         QMessageBox.information(self, "Búsqueda", f"El dato {data} no ha sido encontrado en la estructura de datos.")
@@ -518,7 +528,8 @@ class DataStructureApp(QWidget):
             while current:
                 data["data"].append(current.data)
                 current = current.next
-        elif isinstance(self.data_structure, (LinkedList, CircularLinkedList, DoublyLinkedList, CircularDoublyLinkedList)):
+        elif isinstance(self.data_structure,
+                        (LinkedList, CircularLinkedList, DoublyLinkedList, CircularDoublyLinkedList)):
             current = self.data_structure.head
             while current:
                 data["data"].append(current.data)
@@ -632,6 +643,275 @@ class DataStructureApp(QWidget):
         if node.right:
             self.scene.addLine(x + 25, y + 50, x + space + 25, y + 100)
             self.draw_binary_tree(node.right, y + 100, x + space, space / 2)
+
+
+def delete_data(self):
+    if not self.data_structure:
+        return
+
+    data_type = self.data_type_combo.currentText()
+    if data_type == 'Números enteros':
+        data_text, ok = QInputDialog.getText(self, "Eliminar dato", "Ingrese el número entero a eliminar:")
+        if ok:
+            data = int(data_text)
+        else:
+            return
+    elif data_type == 'Números flotantes':
+        data_text, ok = QInputDialog.getText(self, "Eliminar dato", "Ingrese el número flotante a eliminar:")
+        if ok:
+            data = float(data_text)
+        else:
+            return
+    elif data_type == 'Valores lógicos':
+        data_text, ok = QInputDialog.getText(self, "Eliminar dato",
+                                             "Ingrese el valor lógico (True o False) a eliminar:")
+        if ok:
+            data = True if data_text.lower() == 'true' else False
+        else:
+            return
+    elif data_type == 'Cadenas de texto':
+        data_text, ok = QInputDialog.getText(self, "Eliminar dato", "Ingrese la cadena de texto a eliminar:")
+        if ok:
+            data = str(data_text)
+        else:
+            return
+    else:
+        return
+
+    structure = self.structure_combo.currentText()
+    if structure == 'Pila':
+        if self.data_structure.peek() == data:
+            self.data_structure.pop()
+    elif structure == 'Cola':
+        if self.data_structure.peek() == data:
+            self.data_structure.dequeue()
+    elif structure == 'Lista simplemente enlazada':
+        pass
+    elif structure == 'Lista circular':
+        pass
+    elif structure == 'Lista doblemente enlazada':
+        pass
+    elif structure == 'Lista circular doble':
+        pass
+    elif structure == 'Árbol binario':
+        pass
+    elif structure == 'Árbol de búsqueda':
+        self.data_structure.delete(data)
+
+    self.update_data_structure_view()
+
+
+def search_data(self):
+    if not self.data_structure:
+        return
+
+    data_type = self.data_type_combo.currentText()
+    if data_type == 'Números enteros':
+        data_text, ok = QInputDialog.getText(self, "Buscar dato", "Ingrese el número entero a buscar:")
+        if ok:
+            data = int(data_text)
+        else:
+            return
+    elif data_type == 'Números flotantes':
+        data_text, ok = QInputDialog.getText(self, "Buscar dato", "Ingrese el número flotante a buscar:")
+        if ok:
+            data = float(data_text)
+        else:
+            return
+    elif data_type == 'Valores lógicos':
+        data_text, ok = QInputDialog.getText(self, "Buscar dato",
+                                             "Ingrese el valor lógico (True o False) a buscar:")
+        if ok:
+            data = True if data_text.lower() == 'true' else False
+        else:
+            return
+    elif data_type == 'Cadenas de texto':
+        data_text, ok = QInputDialog.getText(self, "Buscar dato", "Ingrese la cadena de texto a buscar:")
+        if ok:
+            data = str(data_text)
+        else:
+            return
+    else:
+        return
+
+    if not ok:
+        return
+
+    structure = self.structure_combo.currentText()
+    if structure == 'Pila':
+        pass
+    elif structure == 'Cola':
+        pass
+    elif structure == 'Lista simplemente enlazada':
+        if self.data_structure.search(data):
+            QMessageBox.information(self, "Búsqueda",
+                                    f"El dato {data} ha sido encontrado en la estructura de datos.")
+            return
+    elif structure == 'Lista circular':
+        if self.data_structure.search(data):
+            QMessageBox.information(self, "Búsqueda",
+                                    f"El dato {data} ha sido encontrado en la estructura de datos.")
+            return
+    elif structure == 'Lista doblemente enlazada':
+        if self.data_structure.search(data):
+            QMessageBox.information(self, "Búsqueda",
+                                    f"El dato {data} ha sido encontrado en la estructura de datos.")
+            return
+    elif structure == 'Lista circular doble':
+        if self.data_structure.search(data):
+            QMessageBox.information(self, "Búsqueda",
+                                    f"El dato {data} ha sido encontrado en la estructura de datos.")
+            return
+    elif structure == 'Árbol binario':
+        if self.data_structure.search(data):
+            QMessageBox.information(self, "Búsqueda",
+                                    f"El dato {data} ha sido encontrado en la estructura de datos.")
+            return
+    elif structure == 'Árbol de búsqueda':
+        if self.data_structure.search(data):
+            QMessageBox.information(self, "Búsqueda",
+                                    f"El dato {data} ha sido encontrado en la estructura de datos.")
+            return
+
+    QMessageBox.information(self, "Búsqueda", f"El dato {data} no ha sido encontrado en la estructura de datos.")
+
+
+def save_data(self):
+    if not self.data_structure:
+        return
+
+    file_path, _ = QFileDialog.getSaveFileName(self, "Guardar archivo", "", "Archivos JSON (*.json)")
+    if not file_path:
+        return
+
+    data = {
+        "structure_type": type(self.data_structure)._name_,
+        "data": []
+    }
+
+    if isinstance(self.data_structure, Stack) or isinstance(self.data_structure, Queue):
+        current = self.data_structure.top if isinstance(self.data_structure, Stack) else self.data_structure.front
+        while current:
+            data["data"].append(current.data)
+            current = current.next
+    elif isinstance(self.data_structure,
+                    (LinkedList, CircularLinkedList, DoublyLinkedList, CircularDoublyLinkedList)):
+        current = self.data_structure.head
+        while current:
+            data["data"].append(current.data)
+            current = current.next
+            if current == self.data_structure.head:
+                break
+    elif isinstance(self.data_structure, BinaryTree) or isinstance(self.data_structure, BinarySearchTree):
+        nodes = [self.data_structure]
+        while nodes:
+            node = nodes.pop(0)
+            if node:
+                data["data"].append(node.data)
+                if node.left:
+                    nodes.append(node.left)
+                if node.right:
+                    nodes.append(node.right)
+
+    with open(file_path, 'w') as f:
+        json.dump(data, f)
+
+    QMessageBox.information(self, "Guardar archivo", "Estructura de datos guardada exitosamente.")
+
+
+def load_data(self):
+    file_path, _ = QFileDialog.getOpenFileName(self, "Cargar archivo", "", "Archivos JSON (*.json)")
+    if not file_path:
+        return
+
+    with open(file_path, 'r') as f:
+        data = json.load(f)
+
+    if data["structure_type"] == 'Stack':
+        self.data_structure = Stack()
+        for item in data["data"]:
+            self.data_structure.push(item)
+    elif data["structure_type"] == 'Queue':
+        self.data_structure = Queue()
+        for item in data["data"]:
+            self.data_structure.enqueue(item)
+    elif data["structure_type"] == 'LinkedList':
+        self.data_structure = LinkedList()
+        for item in data["data"]:
+            self.data_structure.insert_end(item)
+    elif data["structure_type"] == 'CircularLinkedList':
+        self.data_structure = CircularLinkedList()
+        for item in data["data"]:
+            self.data_structure.insert_end(item)
+    elif data["structure_type"] == 'DoublyLinkedList':
+        self.data_structure = DoublyLinkedList()
+        for item in data["data"]:
+            self.data_structure.insert_end(item)
+    elif data["structure_type"] == 'CircularDoublyLinkedList':
+        self.data_structure = CircularDoublyLinkedList()
+        for item in data["data"]:
+            self.data_structure.insert_end(item)
+    elif data["structure_type"] == 'BinaryTree':
+        self.data_structure = BinaryTree(data["data"][0])
+        for item in data["data"][1:]:
+            self.data_structure.insert(item)
+    elif data["structure_type"] == 'BinarySearchTree':
+        self.data_structure = BinarySearchTree(data["data"][0])
+        for item in data["data"][1:]:
+            self.data_structure.insert(item)
+
+    self.update_data_structure_view()
+
+
+def update_data_structure_view(self):
+    self.scene.clear()
+
+    if not self.data_structure:
+        return
+
+    structure_type = type(self.data_structure)._name_
+    if structure_type in ['Stack', 'Queue']:
+        current = self.data_structure.top if structure_type == 'Stack' else self.data_structure.front
+        y = 50
+        while current:
+            node = QGraphicsRectItem(0, y, 100, 50)
+            text = QGraphicsTextItem(str(current.data))
+            text.setPos(10, y + 10)
+            self.scene.addItem(node)
+            self.scene.addItem(text)
+            y += 70
+            current = current.next
+    elif structure_type in ['LinkedList', 'CircularLinkedList', 'DoublyLinkedList', 'CircularDoublyLinkedList']:
+        current = self.data_structure.head
+        y = 50
+        while current:
+            node = QGraphicsRectItem(0, y, 100, 50)
+            text = QGraphicsTextItem(str(current.data))
+            text.setPos(10, y + 10)
+            self.scene.addItem(node)
+            self.scene.addItem(text)
+            y += 70
+            current = current.next
+            if current == self.data_structure.head:
+                break
+    elif structure_type in ['BinaryTree', 'BinarySearchTree']:
+        self.draw_binary_tree(self.data_structure, self.data_structure.height() * 50, 0, 400)
+
+
+def draw_binary_tree(self, node, y, x, space):
+    if not node:
+        return
+    circle = QGraphicsEllipseItem(x, y, 50, 50)
+    text = QGraphicsTextItem(str(node.data))
+    text.setPos(x + 10, y + 10)
+    self.scene.addItem(circle)
+    self.scene.addItem(text)
+    if node.left:
+        self.scene.addLine(x + 25, y + 50, x - space + 25, y + 100)
+        self.draw_binary_tree(node.left, y + 100, x - space, space / 2)
+    if node.right:
+        self.scene.addLine(x + 25, y + 50, x + space + 25, y + 100)
+        self.draw_binary_tree(node.right, y + 100, x + space, space / 2)
 
 
 if __name__ == '__main__':
