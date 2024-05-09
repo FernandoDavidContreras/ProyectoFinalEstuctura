@@ -566,7 +566,9 @@ class DataStructureApp(QWidget):
         node.setBrush(QBrush(Qt.green))
         self.scene.addItem(node)
         text = QGraphicsTextItem(str(data))
-        text.setPos(x - 10, y - 10)
+        text_width = text.boundingRect().width()
+        text_height = text.boundingRect().height()
+        text.setPos(x - text_width / 2, y - text_height / 2)
         self.scene.addItem(text)
 
     def draw_line(self, x1, y1, x2, y2, data):
